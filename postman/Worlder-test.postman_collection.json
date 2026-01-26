@@ -1,0 +1,223 @@
+{
+  "info": {
+    "_postman_id": "bd45e393-37ce-400c-8585-f8c6bbeeb39a",
+    "name": "Worlder-test",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "19461488"
+  },
+  "item": [
+    {
+      "name": "get people",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Mandatory fields exist\", function () {\r",
+              "    const jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData).to.have.property(\"name\");\r",
+              "    pm.expect(jsonData).to.have.property(\"height\");\r",
+              "    pm.expect(jsonData).to.have.property(\"mass\");\r",
+              "    pm.expect(jsonData).to.have.property(\"birth_year\");\r",
+              "    pm.expect(jsonData).to.have.property(\"gender\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Starships is an array\", function () {\r",
+              "    const jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.starships).to.be.an(\"array\");\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://swapi.info/api/people/1",
+          "protocol": "https",
+          "host": [
+            "swapi",
+            "info"
+          ],
+          "path": [
+            "api",
+            "people",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get people Invalid",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 404 for invalid ID\", function () {\r",
+              "    pm.response.to.have.status(404);\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://swapi.info/api/people/999",
+          "protocol": "https",
+          "host": [
+            "swapi",
+            "info"
+          ],
+          "path": [
+            "api",
+            "people",
+            "999"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get starship",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Response is JSON\", function () {\r",
+              "    pm.response.to.be.json;\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Mandatory starship fields exist\", function () {\r",
+              "    const jsonData = pm.response.json();\r",
+              "\r",
+              "    pm.expect(jsonData).to.have.property(\"name\");\r",
+              "    pm.expect(jsonData).to.have.property(\"model\");\r",
+              "    pm.expect(jsonData).to.have.property(\"manufacturer\");\r",
+              "    pm.expect(jsonData).to.have.property(\"cost_in_credits\");\r",
+              "    pm.expect(jsonData).to.have.property(\"length\");\r",
+              "    pm.expect(jsonData).to.have.property(\"max_atmosphering_speed\");\r",
+              "    pm.expect(jsonData).to.have.property(\"crew\");\r",
+              "    pm.expect(jsonData).to.have.property(\"passengers\");\r",
+              "    pm.expect(jsonData).to.have.property(\"cargo_capacity\");\r",
+              "    pm.expect(jsonData).to.have.property(\"consumables\");\r",
+              "    pm.expect(jsonData).to.have.property(\"hyperdrive_rating\");\r",
+              "    pm.expect(jsonData).to.have.property(\"MGLT\");\r",
+              "    pm.expect(jsonData).to.have.property(\"starship_class\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Pilots is an array\", function () {\r",
+              "    const jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.pilots).to.be.an(\"array\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Films is an array\", function () {\r",
+              "    const jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.films).to.be.an(\"array\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"URL is correct\", function () {\r",
+              "    const jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.url).to.eql(\"https://swapi.info/api/starships/2\");\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://swapi.info/api/starships/2",
+          "protocol": "https",
+          "host": [
+            "swapi",
+            "info"
+          ],
+          "path": [
+            "api",
+            "starships",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get starship Invalid",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 404 for invalid ID\", function () {\r",
+              "    pm.response.to.have.status(404);\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://swapi.info/api/starship/999",
+          "protocol": "https",
+          "host": [
+            "swapi",
+            "info"
+          ],
+          "path": [
+            "api",
+            "starship",
+            "999"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
