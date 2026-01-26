@@ -1,5 +1,7 @@
 name: API Worlder
 
+
+# Run on push and pull request to main branch
 on:
   push:
     branches: [ main ]
@@ -11,9 +13,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    # Checkout source code
       - name: Checkout repository
         uses: actions/checkout@v4
-
+    # Setup Node.js for Newman
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -21,7 +24,8 @@ jobs:
 
       - name: Install Newman
         run: npm install -g newman
-
+    
+    # Run Postman API tests
       - name: Run Postman API Tests
         run: |
           newman run postman/Worlder-test.postman_collection.json
