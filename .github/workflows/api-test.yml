@@ -1,5 +1,4 @@
-name: API Worlder
-
+name: API Worlder Test
 
 # Run on push and pull request to main branch
 on:
@@ -25,7 +24,12 @@ jobs:
       - name: Install Newman
         run: npm install -g newman
     
-    # Run Postman API tests
+    # Run API tests
       - name: Run Postman API Tests
         run: |
           newman run postman/Worlder-test.postman_collection.json
+    
+    # Test fail 
+      # - name: Run Postman API Tests
+      #   run: |
+      #     newman run postman/Worlder-test.postman_collection
