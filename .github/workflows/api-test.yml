@@ -24,12 +24,12 @@ jobs:
       - name: Install Newman
         run: npm install -g newman
     
-    # # Trigger PR Run API tests
-    #   - name: Run Postman API Tests
-    #     run: |
-    #       newman run postman/Worlder-test.postman_collection.json
-    
-    # Test fail 
+    # Run API tests
       - name: Run Postman API Tests
         run: |
-          newman run postman/Worlder-test.postman_collection
+          newman run postman/Worlder-test.postman_collection.json
+    
+    # Test fail 
+      # - name: Run Postman API Tests
+      #   run: |
+      #     newman run postman/Worlder-test.postman_collection
